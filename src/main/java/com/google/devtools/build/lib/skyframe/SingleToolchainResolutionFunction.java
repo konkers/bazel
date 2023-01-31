@@ -274,7 +274,7 @@ public class SingleToolchainResolutionFunction implements SkyFunction {
       String mismatchValues =
           mismatchSettingsWithDefault.stream()
               .filter(toolchainConstraints::has)
-              .map(s -> toolchainConstraints.get(s).label().getName())
+              .map(s -> s.label() + "=" + toolchainConstraints.get(s).label().getName())
               .collect(joining(", "));
       if (!mismatchValues.isEmpty()) {
         mismatchValues = "; mismatching values: " + mismatchValues;
